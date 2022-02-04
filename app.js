@@ -1,18 +1,30 @@
-// in views we rae going to keep our templates and htmls , handlebars and other stuffs
-// public data can be grabbed easily
-// routes will store all the app routes
-// configs will contain some secret data
-
-// app.js is our server
 
 const express = require('express');
-
 const app = express();
+const path = require('path')
+const hbs = require('express-handlebars')
 const port = process.env.PORT || 8000;
 
-app.get('/' , (req, res) => {
-    res.send('i am home page')
 
+
+
+
+app.use(express.static( path.join(__dirname , 'public')  )); // now static files in public directories can be used easily
+
+
+app.engine('handlebars', hbs.engine( {defaultLayout : 'home'} )    )  
+app.set('view engine', 'handlebars');
+
+
+app.get('/' , (req, res) => {
+    res.render('home/index')
+    
+})
+
+
+app.get('/about' , (req, res) => {
+    res.render('home/about')
+    
 })
 
 app.listen(port , (err) => {
