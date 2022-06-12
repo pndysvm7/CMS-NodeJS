@@ -19,11 +19,13 @@ app.set('view engine', 'handlebars');
 //load routes
 const mainRouter = require('./routes/home/index');
 const adminRouter = require('./routes/admin/index');
+const posts = require('./routes/admin/posts');
 
 
 //use routes
 app.use('/', mainRouter);  // everytime anyone goes to home page mainRouter will run
 app.use('/admin', adminRouter);
+app.use('/admin/posts',posts);
 
 
 
