@@ -9,7 +9,7 @@ const port = process.env.PORT || 8000;
 
 
 
-app.use(express.static( path.join(__dirname , 'public')  )); // now static files in public directories can be used easily
+app.use(express.static( path.join(__dirname , 'publicfiles')  )); // now static files in publicfiles directories can be used easily
 
 
 //set view engine
